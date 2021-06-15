@@ -1,0 +1,29 @@
+name: CI
+on:
+  push:
+    branches:
+      - '*'
+    tags-ignore:
+      - '*'
+  release:
+    types:
+      - created
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Code that needs no formatting should pass without changes
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Run action
+        id: action
+        uses: .
+        with:
+          include-glob: '*.kt'
+          path: test/no_formatting_necessary
+          fail-on-changes: false
+
+      - name: Assert no files changed
+        runs: '[[ ${{ action.changed-files }} == 0 ]]'
