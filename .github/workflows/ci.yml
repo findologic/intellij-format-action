@@ -26,4 +26,4 @@ jobs:
           fail-on-changes: false
 
       - name: Assert no files changed
-        runs: '[[ ${{ action.changed-files }} == 0 ]]'
+        run: '[[ ${{ action.changed-files }} == 0 ]]'
