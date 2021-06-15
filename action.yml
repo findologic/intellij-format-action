@@ -20,7 +20,7 @@ inputs:
     default: 'false'
 outputs:
   files-changed:
-    description: Number of files changed by the formatter.
+    description: Zero if none changed, 1 if at least one file changed.
 runs:
   using: docker
   image: Dockerfile
