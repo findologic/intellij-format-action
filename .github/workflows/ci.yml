@@ -13,6 +13,9 @@ jobs:
   test_no_changes:
     runs-on: ubuntu-latest
     name: Test (no formatting changes)
+    env:
+      GIT_BRANCH_NAME: false
+      RELEASE_VERSION: false
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -39,6 +42,9 @@ jobs:
   test_with_changes:
     runs-on: ubuntu-latest
     name: Test (with formatting changes)
+    env:
+      GIT_BRANCH_NAME: false
+      RELEASE_VERSION: false
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -65,6 +71,9 @@ jobs:
   test_without_changes_different_pattern:
     runs-on: ubuntu-latest
     name: Test (no changes due to pattern mismatch)
+    env:
+      GIT_BRANCH_NAME: false
+      RELEASE_VERSION: false
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -91,6 +100,9 @@ jobs:
   test_fail_on_changes:
     runs-on: ubuntu-latest
     name: Test (fail on changes enabled)
+    env:
+      GIT_BRANCH_NAME: false
+      RELEASE_VERSION: false
     steps:
       - name: Checkout
         uses: actions/checkout@v2
