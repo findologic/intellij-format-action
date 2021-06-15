@@ -19,7 +19,7 @@ jobs:
 
       - name: Run action
         id: action
-        uses: .
+        uses: findologic/intellij-format-action@test
         with:
           include-glob: '*.kt'
           path: test/no_formatting_necessary
