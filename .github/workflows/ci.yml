@@ -13,24 +13,13 @@ jobs:
   test_no_changes:
     runs-on: ubuntu-latest
     name: Test (no formatting changes)
-    env:
-      GIT_BRANCH_NAME: false
-      RELEASE_VERSION: false
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Extract branch name
-        uses: EthanSK/git-branch-name-action@v1
-        if: ${{ !startsWith(github.ref, 'refs/tags') }}
-
-      - name: Determine release version
-        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-        if: ${{ startsWith(github.ref, 'refs/tags') }}
-
       - name: Run action
         id: test-action
-        uses: findologic/intellij-format-action@${{ env.GIT_BRANCH_NAME || env.RELEASE_VERSION }}
+        uses: findologic/intellij-format-action@main
         with:
           include-glob: '*.kt'
           path: test/no_formatting_necessary
@@ -42,24 +31,13 @@ jobs:
   test_with_changes:
     runs-on: ubuntu-latest
     name: Test (with formatting changes)
-    env:
-      GIT_BRANCH_NAME: false
-      RELEASE_VERSION: false
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Extract branch name
-        uses: EthanSK/git-branch-name-action@v1
-        if: ${{ !startsWith(github.ref, 'refs/tags') }}
-
-      - name: Determine release version
-        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-        if: ${{ startsWith(github.ref, 'refs/tags') }}
-
       - name: Run action
         id: test-action
-        uses: findologic/intellij-format-action@${{ env.GIT_BRANCH_NAME || env.RELEASE_VERSION }}
+        uses: findologic/intellij-format-action@main
         with:
           include-glob: '*.kt'
           path: test/formatting_necessary
@@ -71,24 +49,13 @@ jobs:
   test_without_changes_different_pattern:
     runs-on: ubuntu-latest
     name: Test (no changes due to pattern mismatch)
-    env:
-      GIT_BRANCH_NAME: false
-      RELEASE_VERSION: false
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Extract branch name
-        uses: EthanSK/git-branch-name-action@v1
-        if: ${{ !startsWith(github.ref, 'refs/tags') }}
-
-      - name: Determine release version
-        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-        if: ${{ startsWith(github.ref, 'refs/tags') }}
-
       - name: Run action
         id: test-action
-        uses: findologic/intellij-format-action@${{ env.GIT_BRANCH_NAME || env.RELEASE_VERSION }}
+        uses: findologic/intellij-format-action@main
         with:
           include-glob: '*.java'
           path: test/formatting_necessary
@@ -100,24 +67,13 @@ jobs:
   test_fail_on_changes:
     runs-on: ubuntu-latest
     name: Test (fail on changes enabled)
-    env:
-      GIT_BRANCH_NAME: false
-      RELEASE_VERSION: false
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Extract branch name
-        uses: EthanSK/git-branch-name-action@v1
-        if: ${{ !startsWith(github.ref, 'refs/tags') }}
-
-      - name: Determine release version
-        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-        if: ${{ startsWith(github.ref, 'refs/tags') }}
-
       - name: Run action
         id: test-action
-        uses: findologic/intellij-format-action@${{ env.GIT_BRANCH_NAME || env.RELEASE_VERSION }}
+        uses: findologic/intellij-format-action@main
         with:
           include-glob: '*.kt'
           path: test/formatting_necessary
