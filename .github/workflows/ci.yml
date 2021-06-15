@@ -28,38 +28,38 @@ jobs:
       - name: Assert no files changed
         run: '[[ ${{ steps.test-action.outputs.files-changed }} == 0 ]]'
 
-#  test_with_changes:
-#    runs-on: ubuntu-latest
-#    name: Test (with formatting changes)
-#    steps:
-#      - name: Checkout
-#        uses: actions/checkout@v2
-#
-#      - name: Run action
-#        id: test-action
-#        uses: findologic/intellij-format-action@test
-#        with:
-#          include-glob: '*.kt'
-#          path: test/formatting_necessary
-#          fail-on-changes: false
-#
-#      - name: Assert no files changed
-#        run: '[[ ${{ steps.test-action.outputs.files-changed }} == 1 ]]'
-#
-#  test_without_changes_different_pattern:
-#    runs-on: ubuntu-latest
-#    name: Test (no changes due to pattern mismatch)
-#    steps:
-#      - name: Checkout
-#        uses: actions/checkout@v2
-#
-#      - name: Run action
-#        id: test-action
-#        uses: findologic/intellij-format-action@test
-#        with:
-#          include-glob: '*.java'
-#          path: test/formatting_necessary
-#          fail-on-changes: false
-#
-#      - name: Assert no files changed
-#        run: '[[ ${{ steps.test-action.outputs.files-changed }} == 0 ]]'
+  test_with_changes:
+    runs-on: ubuntu-latest
+    name: Test (with formatting changes)
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Run action
+        id: test-action
+        uses: findologic/intellij-format-action@test
+        with:
+          include-glob: '*.kt'
+          path: test/formatting_necessary
+          fail-on-changes: false
+
+      - name: Assert no files changed
+        run: '[[ ${{ steps.test-action.outputs.files-changed }} == 1 ]]'
+
+  test_without_changes_different_pattern:
+    runs-on: ubuntu-latest
+    name: Test (no changes due to pattern mismatch)
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Run action
+        id: test-action
+        uses: findologic/intellij-format-action@test
+        with:
+          include-glob: '*.java'
+          path: test/formatting_necessary
+          fail-on-changes: false
+
+      - name: Assert no files changed
+        run: '[[ ${{ steps.test-action.outputs.files-changed }} == 0 ]]'
