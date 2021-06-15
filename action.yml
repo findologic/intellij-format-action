@@ -1,0 +1,29 @@
+---
+name: IntelliJ Formatter
+description: |
+  Runs the IntelliJ formatter on a project to apply IDE style rules. Useful for auto-fixing,
+  as well as enforcing style rules.
+inputs:
+  include-glob:
+    description: |
+      Pattern for files to include. Supports glob-style wildcards. Multiple patterns can be separated by commas.
+    required: false
+    default: '*'
+  path:
+    description: |
+      Path to project directory. The formatter is executed recursively from here. Must be relative to the workspace.
+    required: false
+    default: '.'
+  fail-on-changes:
+    description: If true, the action fails if any file changed.
+    required: false
+    default: 'false'
+outputs:
+  files-changed:
+    description: Number of files changed by the formatter.
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.include-glob }}
+    - ${{ inputs.path }}
