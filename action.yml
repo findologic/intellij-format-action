@@ -20,7 +20,7 @@ inputs:
     default: 'false'
 outputs:
   files-changed:
-    description: Zero if none changed, 1 if at least one file changed.
+    description: Zero if none changed, greater if at least one file changed.
 runs:
   using: docker
   image: Dockerfile

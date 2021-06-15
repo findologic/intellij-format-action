@@ -43,8 +43,8 @@ jobs:
           path: test/formatting_necessary
           fail-on-changes: false
 
-      - name: Assert one file changed
-        run: '[[ ${{ steps.test-action.outputs.files-changed }} == 1 ]]'
+      - name: Assert file change detected
+        run: '[[ ${{ steps.test-action.outputs.files-changed }} -gt 0 ]]'
 
   test_without_changes_different_pattern:
     runs-on: ubuntu-latest
@@ -80,8 +80,8 @@ jobs:
           fail-on-changes: true
         continue-on-error: true
 
-      - name: Assert one file changed
-        run: '[[ ${{ steps.test-action.outputs.files-changed }} == 1 ]]'
+      - name: Assert file change detected
+        run: '[[ ${{ steps.test-action.outputs.files-changed }} -gt 0 ]]'
 
       - name: Assert action failed
         run: '[[ ${{ steps.test-action.outcome }} == "failure" ]]'

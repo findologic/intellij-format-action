@@ -22,7 +22,7 @@ Default: `false`.
 
 ### `files-changed`
 
-Zero if none changed, 1 if at least one file changed.
+Zero if none changed, greater if at least one file changed.
 
 ## Example usage
 
