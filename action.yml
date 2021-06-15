@@ -27,3 +27,4 @@ runs:
   args:
     - ${{ inputs.include-glob }}
     - ${{ inputs.path }}
+    - ${{ inputs.fail-on-changes }}
