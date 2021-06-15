@@ -25,12 +25,12 @@ changed_files_after=$(git status --short)
 changed_files=$(diff <(echo "$changed_files_before") <(echo "$changed_files_after"))
 changed_files_count=$(echo "$changed_files" | wc -l)
 
+echo "$changed_files"
 echo "::set-output name=files-changed::$changed_files_count"
 
 if [[ "$fail_on_changes" == 'true' ]]; then
   if [[ $changed_files_count -gt 0 ]]; then
     echo 'Failing, because these files changed:'
-    echo "$changed_files"
     exit 1
   fi
 fi
