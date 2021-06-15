@@ -21,7 +21,7 @@ changed_files_before=$(git status --short)
 /opt/idea/bin/format.sh -m $include_pattern -r .
 
 changed_files_after=$(git status --short)
-changed_files=$(diff --brief <(echo "$changed_files_before") <(echo "$changed_files_after"))
+changed_files=$(diff --changed-group-format='%>' --unchanged-group-format='' <(echo "$changed_files_before") <(echo "$changed_files_after"))
 changed_files_count=$(($(echo "$changed_files" | wc --lines) - 1))
 
 echo "$changed_files"
