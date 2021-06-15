@@ -84,7 +84,7 @@ jobs:
         run: '[[ ${{ steps.test-action.outputs.files-changed }} == 1 ]]'
 
       - name: Assert action failed
-        run: '[[ ${{ step.test-action.outcome }} == "failure" ]]'
+        run: '[[ ${{ steps.test-action.outcome }} == "failure" ]]'
 
       - name: Assert conclusion is success, because continue-on-error
-        run: '[[ ${{ step.test-action.conclusion }} == "success" ]]'
+        run: '[[ ${{ steps.test-action.conclusion }} == "success" ]]'
