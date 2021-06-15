@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run action
-        id: action
+        id: test-action
         uses: findologic/intellij-format-action@test
         with:
           include-glob: '*.kt'
@@ -26,4 +26,4 @@ jobs:
           fail-on-changes: false
 
       - name: Assert no files changed
-        run: '[[ ${{ steps.action.outputs.changed-files }} == 0 ]]'
+        run: '[[ ${{ steps.test-action.outputs.files-changed }} == 0 ]]'
