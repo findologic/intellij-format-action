@@ -43,7 +43,7 @@ jobs:
           path: test/formatting_necessary
           fail-on-changes: false
 
-      - name: Assert no files changed
+      - name: Assert one file changed
         run: '[[ ${{ steps.test-action.outputs.files-changed }} == 1 ]]'
 
   test_without_changes_different_pattern:
@@ -63,3 +63,28 @@ jobs:
 
       - name: Assert no files changed
         run: '[[ ${{ steps.test-action.outputs.files-changed }} == 0 ]]'
+
+  test_fail_on_changes:
+    runs-on: ubuntu-latest
+    name: Test (fail on changes enabled)
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Run action
+        id: test-action
+        uses: findologic/intellij-format-action@test
+        with:
+          include-glob: '*.kt'
+          path: test/formatting_necessary
+          fail-on-changes: true
+        continue-on-error: true
+
+      - name: Assert one file changed
+        run: '[[ ${{ steps.test-action.outputs.files-changed }} == 1 ]]'
+
+      - name: Assert action failed
+        run: '[[ ${{ step.test-action.outcome }} == "failure" ]]'
+
+      - name: Assert conclusion is success, because continue-on-error
+        run: '[[ ${{ step.test-action.conclusion }} == "success" ]]'
