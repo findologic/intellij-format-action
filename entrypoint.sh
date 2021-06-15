@@ -22,7 +22,7 @@ changed_files_before=$(git status --short)
 
 changed_files_after=$(git status --short)
 changed_files=$(diff <(echo "$changed_files_before") <(echo "$changed_files_after"))
-changed_files_count=$(echo "$changed_files" | wc -l)
+changed_files_count=$(($(echo "$changed_files" | wc -l) - 1))
 
 echo "$changed_files"
 echo "::set-output name=files-changed::$changed_files_count"
