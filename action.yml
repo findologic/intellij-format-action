@@ -25,6 +25,6 @@ runs:
   using: docker
   image: Dockerfile
   args:
-    - ${{ inputs.include-glob }}
     - ${{ inputs.path }}
+    - ${{ inputs.include-glob }}
     - ${{ inputs.fail-on-changes }}
