@@ -9,7 +9,7 @@ RUN apt-get update \
     && cd /opt \
     && tar xzf /tmp/idea.tar.gz \
     && mv /opt/idea* /opt/idea \
-    && rm /tmp/idea.tar.gz \
+    && rm /tmp/idea.tar.gz
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
