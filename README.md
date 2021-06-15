@@ -22,7 +22,7 @@ Default: `false`.
 
 ### `files-changed`
 
-Number of files changed by the formatter.
+Zero if none changed, greater if at least one file changed.
 
 ## Example usage
 
