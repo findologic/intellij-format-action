@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 # Wrapper for the formatter that passes action args and processes the output.
 # Required args:
@@ -16,7 +15,7 @@ base_path=$1
 include_pattern=$2
 fail_on_changes=$3
 
-cd "/github/workspace/$base_path"
+cd "/github/workspace/$base_path" || exit 2
 changed_files_before=$(git status --short)
 
 /opt/idea/bin/format.sh -m $include_pattern -r .
