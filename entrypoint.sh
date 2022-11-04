@@ -25,7 +25,7 @@ changed_files=$(diff <(echo "$changed_files_before") <(echo "$changed_files_afte
 changed_files_count=$(($(echo "$changed_files" | wc --lines) - 1))
 
 echo "$changed_files"
-echo "::set-output name=files-changed::$changed_files_count"
+echo "files-changed=$changed_files_count" >> $GITHUB_OUTPUT
 
 if [[ "$fail_on_changes" == 'true' ]]; then
   if [[ $changed_files_count -gt 0 ]]; then

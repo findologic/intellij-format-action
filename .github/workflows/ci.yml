@@ -15,7 +15,7 @@ jobs:
     name: Test (no formatting changes)
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Run action
         id: test-action
@@ -33,7 +33,7 @@ jobs:
     name: Test (with formatting changes)
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Run action
         id: test-action
@@ -51,7 +51,7 @@ jobs:
     name: Test (no changes due to pattern mismatch)
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Run action
         id: test-action
@@ -69,7 +69,7 @@ jobs:
     name: Test (fail on changes enabled)
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Run action
         id: test-action
