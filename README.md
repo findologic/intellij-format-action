@@ -32,3 +32,4 @@ with:
   include-glob: '*.kt,*.java'
   path: .
 ```
+test
