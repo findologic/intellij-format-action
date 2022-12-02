@@ -15,6 +15,9 @@ base_path=$1
 include_pattern=$2
 fail_on_changes=$3
 
+# Prepare the workspace for safe usage:
+git config --global --add safe.directory /github/workspace
+
 cd "/github/workspace/$base_path" || exit 2
 changed_files_before=$(git status --short)
 
