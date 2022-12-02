@@ -15,6 +15,9 @@ base_path=$1
 include_pattern=$2
 fail_on_changes=$3
 
+# Prepare the workspace for safe usage:
+git config --global --add safe.directory /github/workspace
+
 cd "/github/workspace/$base_path" || exit 2
 changed_files_before=$(git status --short)
 
@@ -25,7 +28,7 @@ changed_files=$(diff <(echo "$changed_files_before") <(echo "$changed_files_afte
 changed_files_count=$(($(echo "$changed_files" | wc --lines) - 1))
 
 echo "$changed_files"
-echo "::set-output name=files-changed::$changed_files_count"
+echo "files-changed=$changed_files_count" >> $GITHUB_OUTPUT
 
 if [[ "$fail_on_changes" == 'true' ]]; then
   if [[ $changed_files_count -gt 0 ]]; then
