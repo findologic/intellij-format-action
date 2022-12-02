@@ -19,7 +19,7 @@ jobs:
 
       - name: Run action
         id: test-action
-        uses: findologic/intellij-format-action@Fix_workflow_warnings_old_actions_versions
+        uses: findologic/intellij-format-action@main
         with:
           include-glob: '*.kt'
           path: test/no_formatting_necessary
@@ -37,7 +37,7 @@ jobs:
 
       - name: Run action
         id: test-action
-        uses: findologic/intellij-format-action@Fix_workflow_warnings_old_actions_versions
+        uses: findologic/intellij-format-action@main
         with:
           include-glob: '*.kt'
           path: test/formatting_necessary
@@ -55,7 +55,7 @@ jobs:
 
       - name: Run action
         id: test-action
-        uses: findologic/intellij-format-action@Fix_workflow_warnings_old_actions_versions
+        uses: findologic/intellij-format-action@main
         with:
           include-glob: '*.java'
           path: test/formatting_necessary
@@ -73,7 +73,7 @@ jobs:
 
       - name: Run action
         id: test-action
-        uses: findologic/intellij-format-action@Fix_workflow_warnings_old_actions_versions
+        uses: findologic/intellij-format-action@main
         with:
           include-glob: '*.kt'
           path: test/formatting_necessary
