@@ -27,7 +27,7 @@ Zero if none changed, greater if at least one file changed.
 ## Example usage
 
 ```yaml
-uses: findologic/intellij-format-action@v1.1.0
+uses: findologic/intellij-format-action@1.0.1
 with:
   include-glob: '*.kt,*.java'
   path: .
