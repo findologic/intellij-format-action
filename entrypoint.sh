@@ -14,6 +14,7 @@ fi
 base_path=$1
 include_pattern=$2
 fail_on_changes=$3
+auto_fix=$4
 
 # Prepare the workspace for safe usage:
 git config --global --add safe.directory /github/workspace
@@ -36,3 +37,10 @@ if [[ "$fail_on_changes" == 'true' ]]; then
     exit 1
   fi
 fi
+
+
+if [[ "$auto_fix" == 'true' ]]; then
+  git commit -am "IntelliJ Formatting code"
+  git push
+fi
+

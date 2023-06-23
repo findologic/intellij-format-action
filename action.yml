@@ -18,6 +18,10 @@ inputs:
     description: If true, the action fails if any file changed.
     required: false
     default: 'false'
+  auto-fix:
+    description: If true, the action create a commit with the formatted code.
+    required: false
+    default: 'false'
 outputs:
   files-changed:
     description: Zero if none changed, greater if at least one file changed.

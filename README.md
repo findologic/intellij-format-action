@@ -18,6 +18,11 @@ Default: `.`.
 Causes the action to fail upon detecting files changed by running the formatter if set to `true`.
 Default: `false`.
 
+### `auto-fix`
+
+If true, the action create a commit with the formatted code.
+Default: `false`.
+
 ## Outputs
 
 ### `files-changed`
@@ -27,8 +32,10 @@ Zero if none changed, greater if at least one file changed.
 ## Example usage
 
 ```yaml
-uses: findologic/intellij-format-action@v1.1.0
+uses: jacopocarlini/intellij-format-action@v1.2.0
 with:
   include-glob: '*.kt,*.java'
   path: .
+  fail-on-changes: false
+  auto-fix: true
 ```
